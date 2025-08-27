@@ -16,7 +16,7 @@ Objetivo: Simples e econômico.
 
 -----------------------------------------------------------------------------------------------------
 
-POO - paradigma de programação que coloca OBJETOS como elementos centrais no desenvolvimento
+# POO - paradigma de programação que coloca OBJETOS como elementos centrais no desenvolvimento.
 
  
 
@@ -36,7 +36,7 @@ POLIMORFISMO: métodos com diferentes comportamentos em classes derivadas de uma
 
 -----------------------------------------------------------------------------------------------------
 
-API recebe uma chamada de um outro software e devolve uma resposta.
+# API recebe uma chamada de um outro software e devolve uma resposta.
 
 Interoperabilidade: Não se importa com a linguagem de programação que está chamando.
 
@@ -47,12 +47,32 @@ Métodos: Post(criando), Put(atualizando), Delete(apagando) & Get(recuperando).
 
 COMMANDS:
 
-- rodar programa: dotnet run
-- criar API: dotnet new webapi -n NOME DA API
-- executável: dotnet new console
-- class library: dotnet new classlib
-- adicionar referência: dotnet add reference
+# Inicializar e executar projetos
+dotnet run                                       # Executa o projeto atual
+dotnet new webapi -n NomeDaApi                   # Cria uma nova API Web
+dotnet new console                               # Cria um projeto executável (console)
+dotnet new classlib -n NomeDaBiblioteca          # Cria uma biblioteca de classes
 
+# Gerenciamento de soluções e referências
+dotnet new sln                                   # Cria uma solução para agrupar projetos
+dotnet sln add [caminho_do_projeto.csproj]       # Adiciona projeto à solução
+dotnet add reference [caminho_do_projeto.csproj] # Adiciona referência entre projetos
 
+# Pacotes e dependências
+dotnet add package Swashbuckle.AspNetCore        # Instala o Swagger para documentação
+dotnet restore                                   # Restaura pacotes NuGet
+dotnet clean                                     # Limpa arquivos temporários/build
+dotnet build                                     # Compila o projeto (verifica erros)
 
+# Fluxo
+dotnet new webapi -n MinhaApi
+dotnet new classlib -n MinhaBiblioteca
+dotnet new sln
+dotnet sln add MinhaApi/MinhaApi.csproj
+dotnet sln add MinhaBiblioteca/MinhaBiblioteca.csproj
+dotnet add MinhaApi/MinhaApi.csproj reference MinhaBiblioteca/MinhaBiblioteca.csproj
+dotnet add MinhaApi package Swashbuckle.AspNetCore
+dotnet build
+dotnet run --project MinhaApi
 
+- Dica: dotnet --help mostra todos os comandos
