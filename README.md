@@ -48,31 +48,53 @@ Métodos: Post(criando), Put(atualizando), Delete(apagando) & Get(recuperando).
 COMMANDS:
 
 # Inicializar e executar projetos
-dotnet run                                       # Executa o projeto atual
-dotnet new webapi -n NomeDaApi                   # Cria uma nova API Web
-dotnet new console                               # Cria um projeto executável (console)
-dotnet new classlib -n NomeDaBiblioteca          # Cria uma biblioteca de classes
+- dotnet run                                       # Executa o projeto atual
+- dotnet new webapi -n NomeDaApi                   # Cria uma nova API Web
+- dotnet new console                               # Cria um projeto executável (console)
+- dotnet new classlib -n NomeDaBiblioteca          # Cria uma biblioteca de classes
 
 # Gerenciamento de soluções e referências
-dotnet new sln                                   # Cria uma solução para agrupar projetos
-dotnet sln add [caminho_do_projeto.csproj]       # Adiciona projeto à solução
-dotnet add reference [caminho_do_projeto.csproj] # Adiciona referência entre projetos
+- dotnet new sln                                   # Cria uma solução para agrupar projetos
+- dotnet sln add [caminho_do_projeto.csproj]       # Adiciona projeto à solução
+- dotnet add reference [caminho_do_projeto.csproj] # Adiciona referência entre projetos
 
 # Pacotes e dependências
-dotnet add package Swashbuckle.AspNetCore        # Instala o Swagger para documentação
-dotnet restore                                   # Restaura pacotes NuGet
-dotnet clean                                     # Limpa arquivos temporários/build
-dotnet build                                     # Compila o projeto (verifica erros)
+- dotnet add package Swashbuckle.AspNetCore        # Instala o Swagger para documentação
+- dotnet restore                                   # Restaura pacotes NuGet
+- dotnet clean                                     # Limpa arquivos temporários/build
+- dotnet build                                     # Compila o projeto (verifica erros)
 
 # Fluxo
-dotnet new webapi -n MinhaApi
-dotnet new classlib -n MinhaBiblioteca
-dotnet new sln
-dotnet sln add MinhaApi/MinhaApi.csproj
-dotnet sln add MinhaBiblioteca/MinhaBiblioteca.csproj
-dotnet add MinhaApi/MinhaApi.csproj reference MinhaBiblioteca/MinhaBiblioteca.csproj
-dotnet add MinhaApi package Swashbuckle.AspNetCore
-dotnet build
-dotnet run --project MinhaApi
+- dotnet new webapi -n MinhaApi
+- dotnet new classlib -n MinhaBiblioteca
+- dotnet new sln
+- dotnet sln add MinhaApi/MinhaApi.csproj
+- dotnet sln add MinhaBiblioteca/MinhaBiblioteca.csproj
+- dotnet add MinhaApi/MinhaApi.csproj reference MinhaBiblioteca/MinhaBiblioteca.csproj
+- dotnet add MinhaApi package Swashbuckle.AspNetCore
+- dotnet build
+- dotnet run --project MinhaApi
 
 - Dica: dotnet --help mostra todos os comandos
+
+- namespace: endereço - Projeto.NomedaPasta
+- using Microsoft.AspNetCore.Mvc;
+→ É uma diretiva de importação que disponibiliza ferramentas para construir APIs e aplicações web no ASP.NET Core.
+
+Funcionalidade principal:
+→ Fornece classes e atributos essenciais para implementar o padrão MVC (Model-View-Controller).
+
+Recursos habilitados por essa importação:
+
+[ApiController]: Transforma uma classe em um controlador de API.
+
+[Route]: Define o caminho da URL para acessar endpoints.
+
+[HttpGet], [HttpPost], etc.: Especificam métodos HTTP (GET, POST, etc.).
+
+ControllerBase: Classe base que oferece métodos úteis como Ok(), NotFound(), BadRequest().
+# Controller
+
+    [ApiController]
+    [Route("[controller]")] - rota
+
