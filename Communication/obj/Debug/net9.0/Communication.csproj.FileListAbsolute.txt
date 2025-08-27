@@ -1,0 +1,12 @@
+C:\Users\user\OneDrive\Documentos\csharp-estudos\Communication\bin\Debug\net9.0\Communication.deps.json
+C:\Users\user\OneDrive\Documentos\csharp-estudos\Communication\bin\Debug\net9.0\Communication.dll
+C:\Users\user\OneDrive\Documentos\csharp-estudos\Communication\bin\Debug\net9.0\Communication.pdb
+C:\Users\user\OneDrive\Documentos\csharp-estudos\Communication\obj\Debug\net9.0\Communication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\OneDrive\Documentos\csharp-estudos\Communication\obj\Debug\net9.0\Communication.AssemblyInfoInputs.cache
+C:\Users\user\OneDrive\Documentos\csharp-estudos\Communication\obj\Debug\net9.0\Communication.AssemblyInfo.cs
+C:\Users\user\OneDrive\Documentos\csharp-estudos\Communication\obj\Debug\net9.0\Communication.csproj.CoreCompileInputs.cache
+C:\Users\user\OneDrive\Documentos\csharp-estudos\Communication\obj\Debug\net9.0\Communication.sourcelink.json
+C:\Users\user\OneDrive\Documentos\csharp-estudos\Communication\obj\Debug\net9.0\Communication.dll
+C:\Users\user\OneDrive\Documentos\csharp-estudos\Communication\obj\Debug\net9.0\refint\Communication.dll
+C:\Users\user\OneDrive\Documentos\csharp-estudos\Communication\obj\Debug\net9.0\Communication.pdb
+C:\Users\user\OneDrive\Documentos\csharp-estudos\Communication\obj\Debug\net9.0\ref\Communication.dll
