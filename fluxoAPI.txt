@@ -1,0 +1,129 @@
+🚀 Fluxo Completo de uma API em .NET (Explicado)
+
+=========================================
+1. MODELS
+=========================================
+- São classes que representam as ENTIDADES do sistema.
+- Cada Model normalmente corresponde a uma tabela no banco de dados.
+- Exemplo: User, Product, Order.
+
+=========================================
+2. DBCONTEXT
+=========================================
+- Classe que herda de DbContext (do Entity Framework Core).
+- Responsável por mapear Models ↔ Banco de Dados.
+- É nele que configuramos as tabelas (DbSet<User>, DbSet<Product>, etc).
+- Registrado como serviço no Program.cs.
+
+=========================================
+3. MIGRATIONS
+=========================================
+- Permitem criar e atualizar o schema do banco a partir dos Models.
+- São uma forma de versionar o banco de dados.
+- Comandos principais:
+  dotnet ef migrations add InitialModel
+  dotnet ef database update
+
+=========================================
+4. SERVICES e USECASES
+=========================================
+- SERVICES:
+  - Interfaces (ex.: IUserService) → contratos.
+  - Implementações (ex.: UserService) → código que executa as regras.
+- USECASES:
+  - Organização da lógica de negócio.
+  - Cada UseCase representa uma ação que o usuário pode fazer.
+  - São equivalentes aos Endpoints, mas organizados em classes próprias.
+  - Exemplo: CreateUserUseCase, LoginUseCase.
+
+=========================================
+5. CONTROLLERS + ENDPOINTS
+=========================================
+- Controllers são classes que recebem requisições HTTP (GET, POST, PUT, DELETE).
+- Contêm os ENDPOINTS da API.
+- Função principal: receber o payload da requisição → chamar o UseCase → devolver a resposta.
+
+=========================================
+6. PAYLOADS & RESPONSES
+=========================================
+- PAYLOAD: é o que o cliente envia para a API (ex.: JSON de cadastro de usuário).
+- RESPONSE: é o que a API retorna para o cliente (padrão de resposta).
+
+=========================================
+7. CONFIGURAÇÃO DE SERVIÇOS (DI - Dependency Injection)
+=========================================
+No Program.cs registramos serviços com diferentes ciclos de vida:
+
+- Singleton → mesmo objeto para toda a aplicação.
+  Exemplo: serviço de configuração global.
+- Scoped → objeto criado por requisição (vive enquanto a requisição existir).
+  Exemplo: DbContext.
+- Transient → novo objeto a cada chamada.
+  Exemplo: serviços pequenos e não compartilháveis (ex.: LoginService).
+
+=========================================
+8. TESTES
+=========================================
+- Usamos pacotes como xUnit, Moq e Microsoft.NET.Test.Sdk.
+- Garantem que os UseCases e Services funcionem corretamente.
+
+=========================================
+9. SWAGGER
+=========================================
+- Pacote: Swashbuckle.AspNetCore
+- Gera documentação interativa da API automaticamente.
+
+=========================================
+🛠️ SETUP INICIAL
+=========================================
+dotnet new web
+dotnet new gitignore
+
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+
+$env:SQL_CONNECTION = "Data Source=localhost;Initial Catalog=Fofoquinha;Trust Server Certificate=true;Integrated Security=true"
+
+dotnet tool install --global dotnet-ef
+dotnet ef migrations add InitialModel
+dotnet ef database update
+
+dotnet add package xunit
+dotnet add package xunit.runner.visualstudio
+dotnet add package Microsoft.NET.Test.Sdk
+dotnet add package Moq
+
+dotnet add package Swashbuckle.AspNetCore
+
+=========================================
+✅ PASSO A PASSO RESUMIDO
+=========================================
+01. Criar Models
+02. Criar DbContext
+03. Configurar conexão com SQL (variável de ambiente)
+04. Criar e rodar Migrations
+05. Criar classe Result (para padronizar retorno)
+06. Definir UseCases (sem implementar)
+07. Definir Payloads e Responses
+08. Criar Controller com Endpoints
+09. Implementar UseCases (regras de negócio)
+10. Injetar UseCases como serviços (DI)
+11. Implementar Serviços auxiliares (ex.: AuthService)
+12. Criar e rodar Testes
+13. Configurar Swagger
+
+=========================================
+🔑 CONCLUSÃO
+=========================================
+Esse é o fluxo padrão de uma API organizada em .NET com boas práticas:
+- Models → representam os dados
+- DbContext → conecta com o banco
+- Migrations → versionam o banco
+- UseCases → organizam a lógica
+- Controllers/Endpoints → expõem a API
+- Services → abstraem funcionalidades
+- Payloads/Responses → padronizam comunicação
+- Testes → garantem qualidade
+- Swagger → documenta a API
